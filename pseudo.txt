@@ -1,7 +1,10 @@
 bamazonCustomer:
 
-start()
+printStock()
 	-displays all items
+	-calls promptUser()
+
+promptUser()
 	-asks user what ID of the product they'd like to buy
 	-asks the amount
 

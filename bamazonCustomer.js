@@ -18,19 +18,20 @@ var connection = mysql.createConnection({
 
 connection.connect(function(err) {
   if (err) throw err;
-  start();
+  printStock();
 
 });
 
 // start() - displays what's in stock and prompts user to pick an id and amount
-function start() {
+function printStock() {
 	
 	connection.query("SELECT * FROM products", function(err, res){
-		
+		// creates table
 		var table = new Table({
     		head: ["ID", "Product", "Department", "Price", "Amount in Stock"]
 		});
 
+		// pushes items in database to table to be printed
 		for (var i = 0; i < res.length; i++) {
       	
 			table.push([res[i].item_id, res[i].product_name, res[i].department_name, res[i].price, res[i].stock_quantity]);

@@ -1,5 +1,6 @@
 var inquirer = require("inquirer");
 var mysql = require("mysql");
+var cliTable = require("cli-table");
 
 var connection = mysql.createConnection({
   host: "localhost",
@@ -11,4 +12,12 @@ var connection = mysql.createConnection({
   // Your password
   password: "",
   database: "bamazon"
+});
+
+
+connection.connect(function(err) {
+  if (err) throw err;
+
+
+
 });

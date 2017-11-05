@@ -1,0 +1,12 @@
+bamazonCustomer:
+
+start()
+	-displays all items
+	-asks user what ID of the product they'd like to buy
+	-asks the amount
+
+checkStock()
+	-checks if there's enough
+		-if yes, print new amount
+		-if no, print "Insufficient quantity"
+	-call start()

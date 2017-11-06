@@ -11,5 +11,7 @@ promptUser()
 checkStock()
 	-checks if there's enough
 		-if yes, print new amount
+			-update database
+			-print total cost of purchase
 		-if no, print "Insufficient quantity"
 	-call start()

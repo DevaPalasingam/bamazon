@@ -1,6 +1,6 @@
 var inquirer = require("inquirer");
 var mysql = require("mysql");
-var Table = require('cli-table');
+var Table = require("cli-table");
 var colors = require("colors");
 
 var connection = mysql.createConnection({
@@ -22,6 +22,12 @@ connection.connect(function(err) {
 
 });
 
+
+
+
+
+
+
 // start() - displays what's in stock and prompts user to pick an id and amount
 function printStock() {
 	
@@ -42,8 +48,60 @@ function printStock() {
 		// prints table
 		console.log(table.toString());
 
+    promptUser();
+
   	});	
   	// closes connection.query
 
 }
 // start() =====================================================
+
+
+// promptUser() - asked the user what product and amount 
+function promptUser() {
+  var inventoryList = [];
+
+  connection.query("SELECT * FROM products", function(err, res) {
+    
+    // this will take the name of each product and push them to inventoryList
+    for (var i = 0; i < res.length; i++) {
+      inventoryList.push(res[i].product_name);
+    }
+    // closes the for-loop
+
+
+    inquirer.prompt([
+      {
+      type: "list",
+      name: "userPick",
+      message: "What item would you like to purchase?",
+      choices: inventoryList
+      },
+      {
+        name: "pickAmount",
+        type: "input",
+        message: "How many would you like to buy?",
+        validate: function(value) {
+          if (isNaN(value) === false) {
+            return true;
+          }
+          return false;
+        }
+      }
+    ]).then(function(user){
+      checkStock(user.userPick, user.pickAmount);
+    });
+
+  });
+  // closes connection.query
+}
+// promptUser() ===============================================
+
+
+// checkStock() checks if there's enough inventory for the user's purchase
+function checkStock(item, amount) {
+  console.log("you picked");
+  console.log(item);
+  console.log(amount);
+}
+// checkStock() ===============================================

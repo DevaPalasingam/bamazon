@@ -98,10 +98,53 @@ function promptUser() {
 // promptUser() ===============================================
 
 
-// checkStock() checks if there's enough inventory for the user's purchase
+// checkStock() - checks if there's enough inventory for the user's purchase
 function checkStock(item, amount) {
-  console.log("you picked");
-  console.log(item);
-  console.log(amount);
+  // inStock = amount in stock
+  // indexCount stores the location of the desired data
+  var inStock;
+  var indexCount;
+  connection.query("SELECT * FROM products", function(err, res) {
+
+    // goes through database to find chosen product
+    for(var i = 0; i < res.length; i++) {
+      if (item === res[i].product_name) {
+        indexCount = i;
+        inStock = res[i].stock_quantity;
+      }
+    }
+    // closes for-loop
+
+    if(amount > inStock) {
+      console.log("Insufficient quantity");
+      printStock();
+    }
+    else {
+      var newAmount = inStock - amount;
+      var cost = amount * res[indexCount].price;
+      updateStock(item, amount, newAmount, cost);
+    }
+
+  });
 }
 // checkStock() ===============================================
+
+// updateStock() - updates the stock_quanity of the item 
+function updateStock(item, amount, newAmount, cost) {
+  var query = connection.query(
+    "UPDATE products SET ? WHERE ?",
+    [
+      {
+        stock_quantity: newAmount
+      },
+      {
+        product_name: item
+      }
+    ],
+    function(err, res) {
+      console.log("Cost: $" + cost);
+      printStock();
+    }
+  );
+}
+// updateStock() ==============================================

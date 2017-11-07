@@ -142,7 +142,7 @@ function updateStock(item, amount, newAmount, cost) {
       }
     ],
     function(err, res) {
-      console.log("Cost: $" + cost);
+      console.log("Cost: $" + cost.toFixed(2));
       printStock();
     }
   );

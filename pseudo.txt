@@ -13,8 +13,9 @@ checkStock()
 		-if yes, print new amount
 			-call updateStock()
 		-if no, print "Insufficient quantity"
-	-call start()
+			-call printStock()
 
 updateStock()
 	-updates database to new amount in stock
 	-prints total cost of purchase
+	-call printStock()

@@ -12,7 +12,7 @@ Online store simulator. You can choose which items you would like to purchase an
 Using Node, run bamazonCustomer.js. The terminal will prompt you to choose an item to purchase. After picking your item, choose the quantity of that item that you'd like to purchase.
 
 
-### What yo'll need
+### What you'll need
 
 * Before you get started, you'll need to install Node.js
 * Then install the needed packages by running "npm install"

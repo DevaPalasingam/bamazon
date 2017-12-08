@@ -1,13 +1,24 @@
-# bamazonCustomer
+# Bamazon
 
-## Overview
+Online store simulator. You can choose which items you would like to purchase and how many you would like.
 
-This program is meant to simulate purchasing items from a store. The item details and inventory are stored in a database.
+![Alt text](/screenShots/initialPrompt.jpg?raw=true)
+![Alt text](/screenShots/userChoose.jpg?raw=true)
+![Alt text](/screenShots/finalPurchase.jpg?raw=true)
 
-When bamazonCustomer.js is run it will first print out the data in the database. 
 
-The user is then prompted to choose which item they would like to purchase.
+## How to Use
 
-After they select their item, the user can then input how many units of that item they'd like to purchase. The user will input a number. If the user inputs something other than a number, nothing will happen.
+Using Node, run bamazonCustomer.js. The terminal will prompt you to choose an item to purchase. After picking your item, choose the quantity of that item that you'd like to purchase.
 
-After that, the screen will show the total cost of the user's purchase. The updated database will be printed, then the user will be prompted to make a purchase again.
+
+### What yo'll need
+
+* Before you get started, you'll need to install Node.js
+* Then install the needed packages by running "npm install"
+* You'll need to run "node bamazonCustomer.js"
+
+
+## Built With
+
+Javascript, NodeJS, and MySQL
